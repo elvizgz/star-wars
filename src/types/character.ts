@@ -1,5 +1,13 @@
+export enum CharacterGender {
+  Male = 'male',
+  Female = 'female'
+}
+
 export interface Character {
-  id: string
   name: string
-  age: number
+  birth_year: string
+  gender: CharacterGender
+  height: string
+  mass: string
+  url: string
 }
