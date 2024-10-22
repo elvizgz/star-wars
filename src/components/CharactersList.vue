@@ -108,10 +108,6 @@ const addToTeam = (character: Character) => {
   gap: 10px;
 }
 
-.error {
-  color: red;
-}
-
 .loading {
   display: flex;
   gap: 5px;

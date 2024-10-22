@@ -10,4 +10,6 @@ export interface Character {
   height: string
   mass: string
   url: string
+  homeworld: string
+  species: string[]
 }
