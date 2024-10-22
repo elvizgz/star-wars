@@ -30,12 +30,13 @@ const showInfo = (character: Character | null) => {
   selectedCharacter.value = character
 }
 
-const addToTeam = (isChecked: boolean, character: Character) => {
+const addToTeam = (character: Character) => {
+  const isChecked = teamMembers.value.some((member) => member.url === character.url)
   if (!isChecked) {
-    teamMembers.value = teamMembers.value.filter((member) => member.id !== character.id)
+    teamMembers.value.push(character)
     return
   }
-  teamMembers.value.push(character)
+  teamMembers.value = teamMembers.value.filter((member) => member.url !== character.url)
 }
 </script>
 
@@ -56,15 +57,17 @@ const addToTeam = (isChecked: boolean, character: Character) => {
           <div v-else>
             <p v-if="characters.length === 0">No characters available</p>
             <div v-else>
-              <div v-for="character in characters" :key="character.id" class="character-list">
+              <div v-for="character in characters" :key="character.url" class="character-list">
                 <input
                   type="checkbox"
-                  @change="(event) => addToTeam(event.target?.checked, character)"
+                  :checked="teamMembers.some((member) => member.url === character.url)"
+                  @change="(event) => addToTeam(character)"
                 />
                 <CharacterCard
                   :character="character"
                   @mouseover="showInfo(character)"
                   @mouseleave="showInfo(null)"
+                  @click="addToTeam(character)"
                 />
               </div>
             </div>
