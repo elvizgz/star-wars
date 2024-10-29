@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { appStrings } from '@/App.constants'
-import CharactersList from '@/components/CharactersList.vue'
+import Menu from '@/components/Menu.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
   <h1>{{ appStrings.title }}</h1>
-  <CharactersList />
+  <Menu />
+  <RouterView />
 </template>
 
 <style scoped></style>
